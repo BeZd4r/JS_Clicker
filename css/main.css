@@ -1,18 +1,76 @@
-.homo-image{
+.animal-block{
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    overflow: auto;
+    width: 100%;
+    height: 100%;
+
+    img {
+        display: block;
+        border: none;
+    }
+
+}
+
+.choose-animal-bar{
     position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%,-50%);
+    width:100%;
+    bottom: 0;
+
+    border-style:inset;
+    border-width: 2px;
+    border-color: black;
+    text-align: center;
+    background-color: azure;
+    
+    img{
+        display: inline-block;
+        margin: 0px 5px 0px;
+    }
 }
 
 .counter-box{
-    background-color: aqua;
-    display:inline-block;
-    font-size: 48px;
+    width: 40%;
+    min-height: 20%;
+    margin: auto;
+
+    text-align: center;
+    
+    border-width: 15px;
+    border-style: double;
+
+    background-color: azure;
+
+    .counter-elem{
+        margin-inline-start: 10px;
+        margin-inline-end: 10px;
+        font-size: 36px;
+    }  
 }
 
-.homo-animation{
-    animation-duration: 1s;
+html{
+    height: 100%;
+    margin:0;
+    padding:0;
+}
+
+body {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    min-height: 100%;
+    margin:0;
+    padding:0;
+}
+
+.animal-animation{
+    animation-duration: 1.2s;
     animation-name: resizehomo;
 }
 
@@ -20,8 +78,10 @@
 
     from {
         width: 1px;
+        height: 1px;
     }
     to{
-        width: 400px;
+        width: 350px;
+        height: 350px;
     }
 }
