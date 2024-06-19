@@ -1,0 +1,27 @@
+.homo-image{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.counter-box{
+    background-color: aqua;
+    display:inline-block;
+    font-size: 48px;
+}
+
+.homo-animation{
+    animation-duration: 1s;
+    animation-name: resizehomo;
+}
+
+@keyframes resizehomo {
+
+    from {
+        width: 1px;
+    }
+    to{
+        width: 400px;
+    }
+}
