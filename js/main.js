@@ -1,27 +1,24 @@
 const counter = document.getElementById("Counter");
 const animal = document.getElementById("Animal"); 
-const animalBar = document.getElementById("choose-animal-bar")
+const animalBar = document.getElementById("choose-animal-bar");
+const coins = document.getElementById("Coins");
 
-const animalStartWidth = 350;
-const animalStartHeight = 350;
+const animalStartWidth = animal.offsetWidth;
+const animalStartHeight = animal.offsetHeight;
 const animalAnimationHeight = 100;
 const animalAnimationWidth = 100;
 
 let clicks = 0;
 
 function drawMainPage(){
-
-    animal.width = animalStartWidth;
-    animal.height = animalStartHeight;
+    console.log(counter.textContent.length)
+    animal.addEventListener("click",clickMainAnimal);
 
     let animalBarEvents = new AnimalBarEvents();
-    animal.addEventListener("click",clickAnimal);
     for (let i = 1; i < 6;i++){
         let animals = document.createElement("img");
         animals.src = `source/animals/animal_${i}.png`;
         animals.id = `animal_${i}`;
-        animals.height = 80;
-        animals.width = 80;
         animals.addEventListener("click",animalBarEvents);
         animalBar.appendChild(animals);
     }
@@ -32,41 +29,36 @@ class AnimalBarEvents{
         switch(event.type) {
             case 'click':
                 let target = event.currentTarget;
-                target.width = 50;
-                target.height = 50;
-                
+                let scale_size = 0.5;
+                target.style.transform = `scale(${scale_size})`;
                 let timer = setTimeout(function increase() { 
-                    console.log("event.currentTarget.width");
-                    target.width = 80;
-                    target.height = 80;
+                    scale_size = 1;
+                    target.style.transform = `scale(${scale_size})`;
+                    animal.src = `source/animals/${target.id}.png`;
                 },50)
 
-                animal.src = `source/animals/${target.id}.png`;
                 break;
         }
     }
 }
 
-function clickAnimal(){
+function clickMainAnimal(){
     clicks++;
     counter.textContent = `Вы сделали ${clicks} клик(ов)`;
-    animalAnimation(clicks);
+    coins.textContent = `${Math.floor(clicks/5)}`
+    animalMainAnimation();
 }
 
-function animalAnimation(currentclicks){
-    animal.width = animalAnimationWidth;
-    animal.height = animalAnimationHeight;
-    
-    let timer = setInterval(resizeAnimal,1);
-
-    function resizeAnimal(){
-
-        animal.height += 10;
-        animal.width += 10;
-
-        if (animal.width == animalStartWidth || 
-        animal.height == animalStartHeight || currentclicks != clicks ){
-            clearTimeout(timer)
+function animalMainAnimation(){
+    let currentClick = clicks;
+    let scale_size = 0.3;
+    let timer = setInterval(resize,1)
+    function resize(){
+        
+        animal.style.transform = `scale(${scale_size})`;
+        scale_size += 0.01
+        if(scale_size > 1 || currentClick != clicks){
+            clearInterval(timer);
         }
     }
 }
