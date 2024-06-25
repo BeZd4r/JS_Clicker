@@ -47,15 +47,16 @@
     width: 48%;
     text-align: center;
     .counter{
-        display: flex;
+        /* display: flex;
         align-items: center;
-        justify-content: center;
+        justify-content: center; */
         max-width: 80%;
     }
 }
 
 .coins-box{
     text-align: right;
+    width: 25%;
     max-width: 25%;
 
     .coins{
@@ -76,7 +77,8 @@
     top: 50%;
 
     display: inline-block;
-    width: 15%;
+    /* width: 15%; */
+    height: 60%;
 }
 
 .game-field{

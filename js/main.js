@@ -1,5 +1,6 @@
 const counter = document.getElementById("Counter");
 const animal = document.getElementById("Animal"); 
+const currentAnimalBox = document.getElementById("current-Animal-Box")
 const currentAnimal = document.getElementById("Current-animal");
 const animalsMenu = document.getElementById("Animals-menu");
 const coins = document.getElementById("Coins");
@@ -42,7 +43,7 @@ function fillMenu(){
 
 function addEvents(){
     animal.addEventListener("click",clickMainAnimal);
-    currentAnimal.addEventListener("click",callAnimalsMenu);
+    currentAnimalBox.addEventListener("click",callAnimalsMenu);
 }
 
 function clickMainAnimal(){
@@ -68,20 +69,21 @@ function animalMainAnimation(){
 }
 
 function callAnimalsMenu(){
-    menuIsActive = !menuIsActive;
     if (menuIsActive){
-        enableMenu();
+        disableMenu();
     }
     else{
-        disableMenu();
+        enableMenu();
     }
     
 }
 
 function disableMenu(){
+    menuIsActive = !menuIsActive;
     animalsMenu.style.display = "none";
 }
 function enableMenu() {
+    menuIsActive = !menuIsActive;
     animalsMenu.style.display = "block";
 }
 class ChangeAnimal {
