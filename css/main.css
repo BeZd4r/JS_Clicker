@@ -1,108 +1,133 @@
 .header{
     width: 100%;
-    height: 20%;
-    max-height: 10%;
+    height: 20vh;
     text-align: center;
     div{
         vertical-align: top;
         display: inline-block;
+        height: 50%;
         div{
+            height: 100%;
+            vertical-align: middle;
+            max-height: 100%;
             background-color: azure;
             border-style: double;
-            border-width: 3px;
+            border-width: 5px;
             border-radius: 9px;
+            overflow:Inherit;
         }
     }
-    h1{
-        font-size: 36px;
+}
+
+.profile-box{
+    width: 13%;
+    text-align: left;
+    .profile{
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
-.profile-box{
-    width: 15%;
+
+.current-animal-box{
+    width: 12%;
     text-align: left;
-    /* .profile{
-
-    } */
+    .current-animal{
+        img{
+            height: 100%;
+            width: auto;
+        }
+    }
 }
-
+.current-animal{
+    text-align: center;
+    min-width: 50%;
+}
 .counter-box{
-    margin-right: auto;
-    width: 69%;
-    height: 100%;
+    width: 48%;
     text-align: center;
     .counter{
-        max-width: 60%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        max-width: 80%;
     }
 }
 
 .coins-box{
     text-align: right;
-    max-width: 15%;
+    max-width: 25%;
+
     .coins{
-
-        width: 80%;
-        max-width: 80%;
-        text-align: left;
-        vertical-align: middle;
         padding: 0 5px;
-        
-        .coins-img{
-            display: inline-block;
-            width: 15%;
-        }
-
+        display: inline-block;
         .total-coins{
             display: inline-block;
             max-width: 75%;
+            max-height: 100%;
             font-size: 36px;
         }
     }
 }
 
-.animal-block{
+.coins-img{
+    position: relative;
+    transform: translateY(-50%);
+    top: 50%;
 
-    position: absolute;
-    top: 0;
-    left: 0;
-    display: flex;
-    align-items: center;
-    align-content: center;
-    justify-content: center;
-    overflow: auto;
-    
-    width: 100%;
-    height: 100%;
-
-    img {
-        width: auto;
-        height: 40%;
-        display: block;
-        border: none;
-    }
+    display: inline-block;
+    width: 15%;
 }
 
-.choose-animal-bar{
-    position: absolute;
-    height: 15%;
-    max-height: 15%;
-    width:100%;
-    bottom: 0;
-
-    border-style:inset;
-    border-width: 2px;
-    border-color: black;
+.game-field{
+    height: 80vh;
     text-align: center;
-    background-color: azure;
-    
-    img{
-        margin: 0px 5px 0px;
-        height: 100%;
-        width: auto;
-    }
+    vertical-align: center;
+    justify-content: center;
+    display: flex;
 }
 
+.animal-block{
+    width: auto;
+    height: 80%;
+}
 
+.animals-menu{
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
 
+    width: 80vw;
+    height: 70vh;
+
+    background-color: azure;
+
+    border-radius: 9px;
+    border-style: double;
+    border-width: 9px;
+
+    padding: 1% 1% 1% 1%;
+
+    overflow-y: scroll; 
+
+}
+.animals-fields-menu{
+    display: inline-block;
+    text-align: center;
+    width: 33%;
+    height: 50%;
+}
+.animals-icons{
+    width: 80%;
+    height: auto;
+}
+.animals-prices{
+    height: 20%;
+    width: 100%;
+    vertical-align: middle;
+}
 html{
     height: 100%;
     margin:0;
@@ -118,4 +143,10 @@ body {
     min-height: 100%;
     margin:0;
     padding:0;
+}
+h1{
+    display: inline-flex;
+        align-items: center;
+        justify-content: center;
+    line-height: 0px;
 }

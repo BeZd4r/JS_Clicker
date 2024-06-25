@@ -6,16 +6,21 @@
         <link rel="stylesheet" href="css/main.css">
         
     </head>
-    <body id="body">
+    <body>
         <div class="header">
             <div class="profile-box">
                 <div class="profile">
                     <h1 id="Profile">Профиль</h1>
                 </div>
             </div>
+            <div class="current-animal-box">
+                <div class="current-animal">
+                    <img id="Current-animal" src="source/animals/animal_1.png">
+                </div>
+            </div>
             <div class="counter-box">
                 <div class="counter">
-                    <h1 id="Counter">Вы сделали 10000000000 клик(ов)</h1>
+                    <h1 id="Counter">Вы сделали 0 клик(ов)</h1>
                 </div>
             </div>
             <div class="coins-box">
@@ -25,13 +30,11 @@
                 </div>
             </div>
         </div>
-        
-        <div id="Animal-block" class="animal-block">
-            <img id="Animal" src="source/animals/animal_1.png"> 
+        <div class="game-field">
+            <img class="animal-block" id="Animal" src="source/animals/animal_1.png">
         </div>
-
-        <div id="choose-animal-bar" class="choose-animal-bar"></div>
-        
+        <div id="Animals-menu" class="animals-menu">
+        </div>
         <script src="js/main.js"></script>  
     </body>
 </html>

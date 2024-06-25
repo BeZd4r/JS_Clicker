@@ -1,51 +1,55 @@
 const counter = document.getElementById("Counter");
 const animal = document.getElementById("Animal"); 
-const animalBar = document.getElementById("choose-animal-bar");
+const currentAnimal = document.getElementById("Current-animal");
+const animalsMenu = document.getElementById("Animals-menu");
 const coins = document.getElementById("Coins");
 
 const animalStartWidth = animal.offsetWidth;
 const animalStartHeight = animal.offsetHeight;
-const animalAnimationHeight = 100;
-const animalAnimationWidth = 100;
 
 let clicks = 0;
+let coin = 0;
+let menuIsActive = false;
 
-function drawMainPage(){
-    console.log(counter.textContent.length)
-    animal.addEventListener("click",clickMainAnimal);
-
-    let animalBarEvents = new AnimalBarEvents();
+function fillMenu(){
     for (let i = 1; i < 6;i++){
-        let animals = document.createElement("img");
-        animals.src = `source/animals/animal_${i}.png`;
-        animals.id = `animal_${i}`;
-        animals.addEventListener("click",animalBarEvents);
-        animalBar.appendChild(animals);
+
+        let animalField = document.createElement("div");
+        animalField.classList.add("animals-fields-menu");
+        animalsMenu.appendChild(animalField);
+
+        let animalIcon = document.createElement("img");
+        animalIcon.src = `source/animals/animal_${i}.png`;
+        animalIcon.id = `animal_${i}`;
+        animalIcon.classList.add("animals-icons");
+        animalIcon.addEventListener("click", new ChangeAnimal);
+        animalField.appendChild(animalIcon);
+
+        let animalPrice = document.createElement("div");
+        animalPrice.classList.add("animals-prices");
+        animalField.appendChild(animalPrice);
+
+        let animalPriceIcon = document.createElement("img");
+        animalPriceIcon.src = `source/coin.png`;
+        animalPriceIcon.classList.add("coins-img")
+        animalPrice.appendChild(animalPriceIcon);
+
+        let animalPriceText = document.createElement("h1");
+        animalPriceText.textContent = i*10;
+        animalPrice.appendChild(animalPriceText);
     }
 }
 
-class AnimalBarEvents{
-    handleEvent(event) {
-        switch(event.type) {
-            case 'click':
-                let target = event.currentTarget;
-                let scale_size = 0.5;
-                target.style.transform = `scale(${scale_size})`;
-                let timer = setTimeout(function increase() { 
-                    scale_size = 1;
-                    target.style.transform = `scale(${scale_size})`;
-                    animal.src = `source/animals/${target.id}.png`;
-                },50)
-
-                break;
-        }
-    }
+function addEvents(){
+    animal.addEventListener("click",clickMainAnimal);
+    currentAnimal.addEventListener("click",callAnimalsMenu);
 }
 
 function clickMainAnimal(){
     clicks++;
+    coin = Math.floor(clicks/5);
     counter.textContent = `Вы сделали ${clicks} клик(ов)`;
-    coins.textContent = `${Math.floor(clicks/5)}`
+    coins.textContent = `${coin}`;
     animalMainAnimation();
 }
 
@@ -63,4 +67,35 @@ function animalMainAnimation(){
     }
 }
 
-drawMainPage();
+function callAnimalsMenu(){
+    menuIsActive = !menuIsActive;
+    if (menuIsActive){
+        enableMenu();
+    }
+    else{
+        disableMenu();
+    }
+    
+}
+
+function disableMenu(){
+    animalsMenu.style.display = "none";
+}
+function enableMenu() {
+    animalsMenu.style.display = "block";
+}
+class ChangeAnimal {
+    handleEvent(event){
+        let currentTarget = event.currentTarget;
+        switch(event.type) {
+            case "click":
+                currentAnimal.src = currentTarget.src;
+                animal.src = currentTarget.src;
+                disableMenu();
+                break;
+        }
+    }
+}
+
+addEvents();
+fillMenu();
